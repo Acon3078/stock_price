@@ -1,2 +1,7 @@
+# Stock App 
 streamlit==1.42.0
 yfinance==0.2.52
+
+# Bioinformatics DNA Counter
+pandas==2.2.3
+altair==5.5.0
