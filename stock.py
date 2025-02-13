@@ -1,31 +1,26 @@
-
 import yfinance as yf
 import streamlit as st
 
-st.write("""
-# Simple Stock Price App
+def main():
+    st.write("""
+    # Simple Stock Price App
 
-Shown are the stock **closing price** and ***volume*** of Amazon!
+    Shown are the stock **closing price** and ***volume*** of Amazon!
+    """)
 
-""")
+    # Define the ticker symbol
+    tickerSymbol = 'AMZN'
+    # Get data on this ticker
+    tickerData = yf.Ticker(tickerSymbol)
+    # Get the historical prices for this ticker
+    tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')
 
-# https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
-#define the ticker symbol
-tickerSymbol = 'AMZN'
-#get data on this ticker
-tickerData = yf.Ticker(tickerSymbol)
-#get the historical prices for this ticker
-tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')
-# Open	High	Low	Close	Volume	Dividends	Stock Splits
+    st.write("## Closing Price")
+    st.line_chart(tickerDf.Close)
 
-st.write("""
-## Closing Price
-""")
-st.line_chart(tickerDf.Close)
-st.write("""
-## Volume Price
-""")
-st.line_chart(tickerDf.Volume)
+    st.write("## Volume Price")
+    st.line_chart(tickerDf.Volume)
 
-
-
+# Ensure the script can be run independently or as a module
+if __name__ == "__main__":
+    main()
