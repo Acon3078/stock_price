@@ -1,14 +1,11 @@
 import streamlit as st
-import subprocess
+import stock
+import dna
 
 st.sidebar.title("Navigation")
-option = st.sidebar.selectbox("Go to:", ["Stock Price App", "Bioinformatics DNA Count App"])
+option = st.sidebar.selectbox("Go to:", ["Stock Price App", "DNA App"])
 
 if option == "Stock Price App":
-    st.write("### Welcome to the Stock Price App")
-    # Run the first script
-    subprocess.run(["python", "stock.py"])
-elif option == "Other App":
-    st.write("### Welcome to the Bioinformatics DNA Count App")
-    # Run the second script
-    subprocess.run(["python", "dna-app.py"])
+    stock.main()  # Call the main function from stock.py
+elif option == "DNA App":
+    dna.main()  # Call the main function from dna.py
