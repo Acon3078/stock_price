@@ -13,7 +13,7 @@ from PIL import Image
 
 image = Image.open('dna-logo.jpg')
 
-st.image(image, use_column_width=True)
+st.image(image, use_container_width=True)
 
 st.write("""
 # DNA Nucleotide Count Web App
@@ -53,6 +53,7 @@ st.header('OUTPUT (DNA Nucleotide Count)')
 ### 1. Print dictionary
 st.subheader('1. Print dictionary')
 def DNA_nucleotide_count(seq):
+  seq = seq.upper()
   d = dict([
             ('A',seq.count('A')),
             ('T',seq.count('T')),
